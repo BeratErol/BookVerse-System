@@ -34,10 +34,15 @@ Proje iki ana aşamadan oluşmaktadır:
 ## 📁 Proje Yapısı
 
 BookVerse-System
+
 │
+
 ├── single-file-monolith/ # Kitap yönetimini yapan ana servis
+
 ├── user-service/ # Ayrıştırılmış kullanıcı mikroservisi
+
 ├── docker-compose.yml # Servisleri tek komutla ayağa kaldıran yapı
+
 └── README.md
 
 ---
@@ -49,6 +54,7 @@ Projeyi yerel makinenizde çalıştırmak için Docker yüklü olması yeterlidi
 git clone https://github.com/BeratErol/BookVerse-System.git
 
 cd BookVerse-System
+
 docker-compose up --build
 
 ---
