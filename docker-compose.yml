@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  monolith-app:
+    # Build: Dockerfile'ı nerede bulacağını söyler (single-file-monolith klasöründe)
+    build: ./single-file-monolith 
+    # Port eşleme: Bilgisayarınızın 8080'ini konteynerin 8080'ine bağlar
+    ports:
+      - "8080:8080"
+    networks:
+      - bookverse-net
+    # Monolitin, User Service başlamadan çalışmaması gerektiğini belirtir
+    depends_on:
+      - user-service
+
+  user-service:
+    # Build: Dockerfile'ı user-service klasöründe bulur
+    build: ./user-service
+    # Port eşleme: Bilgisayarınızın 8081'ini konteynerin 8081'ine bağlar
+    ports:
+      - "8081:8081"
+    networks:
+      - bookverse-net
+
+# İki servisin birbirini bulabilmesi için ortak bir ağ tanımlanır
+networks:
+  bookverse-net:
+    driver: bridge 
